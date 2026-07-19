@@ -16,6 +16,6 @@ public class AvaliacaoFisicaDto {
     private Integer alunoId;
     private BigDecimal peso;
     private BigDecimal altura;
-    private BigDecimal percentualGorduraCorporal;
+    private BigDecimal porcentagemGorduraCorporal;
 
 }

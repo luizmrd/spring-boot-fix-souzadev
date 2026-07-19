@@ -1,5 +1,6 @@
 package com.luizmrd.spring_boot_fix_souza.controller;
 
+import com.luizmrd.spring_boot_fix_souza.database.model.AvaliacaoFisicaEntity;
 import com.luizmrd.spring_boot_fix_souza.database.model.ExerciciosEntity;
 import com.luizmrd.spring_boot_fix_souza.database.repository.IAlunosRepository;
 import com.luizmrd.spring_boot_fix_souza.dto.AlunoDto;
@@ -26,6 +27,10 @@ public class AlunoController {
     @ResponseStatus(HttpStatus.CREATED)
     public void criarAluno(@Valid @RequestBody AlunoDto alunoDto) throws BadRequestException {
         alunoService.criarAluno(alunoDto);
+    }
+    @GetMapping("/{alunoId}/avaliacao")
+    public AvaliacaoFisicaEntity getAvaliacao(@PathVariable Integer alunoId){
+        return alunoService.getAlunoAvaliacoes(alunoId);
     }
 
 }
