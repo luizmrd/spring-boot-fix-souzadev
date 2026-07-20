@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "alunos")
@@ -22,9 +25,12 @@ public class AlunosEntity {
     private String email;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "avaliacao_fisica_id")
     private AvaliacaoFisicaEntity avaliacaoFisica;
+
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+    private Set<TreinosEntity> treinos = new HashSet<>();
 
 
 
